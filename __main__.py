@@ -12,9 +12,9 @@ for profile, events in profile_events():
     for event in events:
         name = json.loads(event.object.data)['$event_name']
         key = name if name[0] == '$' else 'events'
-        c = profile.get(name)
+        c = profile.get(key)
         if c == None:
-            c = profile[name] = ChunkedList()
+            c = profile[key] = ChunkedList()
         c.push([(event.timestamp, event.groupkey, event.ip, event.object)])
     too_old = datetime.strftime(datetime.strptime(event.timestamp, TFORMAT) -\
                                 timedelta(days=PROFILE_RETENTION), TFORMAT)
