@@ -14,7 +14,7 @@ for profile, events in profile_events():
         key = name if name[0] == '$' else 'events'
         c = profile.get(name)
         if c == None:
-            c = ChunkedList()
+            c = profile[name] = ChunkedList()
         c.push([(event.timestamp, event.groupkey, event.ip, event.object)])
     too_old = datetime.strftime(datetime.strptime(event.timestamp, TFORMAT) -\
                                 timedelta(days=PROFILE_RETENTION), TFORMAT)
