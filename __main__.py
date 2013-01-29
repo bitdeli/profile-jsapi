@@ -6,7 +6,7 @@ import json
 
 PARAMS = params()
 PROFILE_RETENTION = PARAMS['plan']['retention-days']
-TFORMAT = '%Y-%m-%dT%H:%M:%SZ'
+TFORMAT = '%Y-%m-%dT%H:%M:%S.%fZ'
 
 for profile, events in profile_events():
     for event in events:
