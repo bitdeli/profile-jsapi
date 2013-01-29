@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import json
 
 PARAMS = params()
-PROFILE_RETENTION = PARAMS['plan']['retention-days']
+PROFILE_RETENTION = 365
 TFORMAT = '%Y-%m-%dT%H:%M:%S.%fZ'
 
 for profile, events in profile_events():
