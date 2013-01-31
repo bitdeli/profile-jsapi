@@ -18,6 +18,7 @@ for profile, events in profile_events():
         c.push([(event.timestamp, event.groupkey, event.ip, event.object)])
     too_old = datetime.strftime(datetime.strptime(event.timestamp, TFORMAT) -\
                                 timedelta(days=PROFILE_RETENTION), TFORMAT)
-    for events in profile.itervalues():
-        events.drop_chunks(lambda x: x[0] > too_old)
+    for key, lst in profile.iteritems():
+        if key[0] != '!':
+            lst.drop_chunks(lambda x: x[0] > too_old)
     profile.set_expire(PROFILE_RETENTION)
