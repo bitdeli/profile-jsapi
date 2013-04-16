@@ -1,5 +1,5 @@
 from bitdeli import profile_events
-from bitdeli.protocol import params
+from bitdeli.protocol import params, done
 from bitdeli.chunkedlist import ChunkedList
 from datetime import datetime, timedelta
 import json
@@ -22,3 +22,5 @@ for profile, events in profile_events():
         if key[0] != '!':
             lst.drop_chunks(lambda x: x[0] > too_old)
     profile.set_expire(PROFILE_RETENTION)
+
+done()
