@@ -21,6 +21,6 @@ for profile, events in profile_events():
     for key, lst in profile.iteritems():
         if key[0] != '!':
             lst.drop_chunks(lambda x: x[0] > too_old)
-    profile.set_expire(PROFILE_RETENTION)
+    #profile.set_expire(PROFILE_RETENTION)
 
 done()
